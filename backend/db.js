@@ -9,11 +9,18 @@ async function mongoDB() {
     console.log("Connected....");
 
     const foodDataCollection = mongoose.connection.db.collection("foodData");
-
     const data = await foodDataCollection.find({}).toArray();
-    console.log();
+
+    const foodCategory = mongoose.connection.db.collection("foodCategory");
+    const catData = await foodCategory.find({}).toArray();
+
+    global.foodData = data;
+    global.foodCategory = catData;
+
+    // console.log(global.foodData);
+    // console.log(global.foodCategory);
   } catch (err) {
-    console.error(err);
+    console.error("Error connecting to MongoDB:", err);
   }
 }
 
