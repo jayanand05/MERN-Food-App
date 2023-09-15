@@ -36,6 +36,7 @@ function Signup() {
       [event.target.name]: event.target.value,
     });
   };
+
   return (
     <>
       <div className="container">
